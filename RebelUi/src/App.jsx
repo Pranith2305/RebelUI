@@ -1,10 +1,12 @@
 import React from "react";
-import ButtonTest from "./display/test";
+import ButtonTest from "./display/ButtonTest";
+import CardTest from "./display/CardTest";
 function App() {
+  
   return (
     <div>
-      <ButtonTest></ButtonTest>
-    </div>
+      <CardTest></CardTest>
+    </div>  
   );
 }
 
