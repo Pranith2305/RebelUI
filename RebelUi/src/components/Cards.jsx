@@ -1,63 +1,59 @@
-import React from "react";
+import React from 'react';
 
-const Card = ({
-  title,
-  description,
-  image,
-  actionText,
-  onActionClick,
-  type = "default",
-  shadow = "lg",
-  hoverEffect = false,
-}) => {
-  // Define different card styles based on the type
-  const cardStyles = {
-    default: "bg-white",
-    primary: "bg-blue-500",
-    secondary: "bg-gray-500",
-    success: "bg-green-500",
-    danger: "bg-red-500",
-  };
-
-  // Define different shadow styles
-  const shadowStyles = {
-    sm: "shadow-sm",
-    md: "shadow-md",
-    lg: "shadow-lg",
-    xl: "shadow-xl",
-    "2xl": "shadow-2xl",
-  };
-
-  // Define hover effect
-  const hoverStyles = hoverEffect
-    ? "hover:shadow-xl hover:scale-105 transition-transform duration-300"
-    : "";
-
-  return (
-    <div
-      className={`${cardStyles[type]} ${shadowStyles[shadow]} rounded-lg overflow-hidden ${hoverStyles}`}
-    >
-      {image && (
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-48 object-cover object-center"
-        />
-      )}
-      <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-        <p className="text-gray-600 mb-4">{description}</p>
-        {actionText && (
-          <button
-            onClick={onActionClick}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
-          >
-            {actionText}
-          </button>
-        )}
-      </div>
-    </div>
-  );
+// Utility function to join class names
+const classNames = (...classes) => {
+  return classes
+    .filter(Boolean) // Filter out falsey values (e.g., null, undefined, false)
+    .join(' ');      // Join the array elements into a single string
 };
 
-export default Card;
+// Base Card Component with optional hover effect
+const Card = ({ className, children, hover = false, ...props }) => (
+  <div
+    className={classNames(
+      "rounded-lg border bg-white shadow-sm transition-transform duration-300",
+      hover ? "hover:shadow-lg hover:scale-105" : "",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+// Card Header Component
+const CardHeader = ({ className, children, ...props }) => (
+  <div className={classNames('flex flex-col space-y-1.5 p-6', className)} {...props}>
+    {children}
+  </div>
+);
+
+// Card Title Component
+const CardTitle = ({ className, children, ...props }) => (
+  <h3 className={classNames("text-2xl font-semibold leading-none tracking-tight", className)} {...props}>
+    {children}
+  </h3>
+);
+
+// Card Description Component
+const CardDescription = ({ className, children, ...props }) => (
+  <p className={classNames("text-sm text-gray-400", className)} {...props}>
+    {children}
+  </p>
+);
+
+// Card Content Component
+const CardContent = ({ className, children, ...props }) => (
+  <div className={classNames('p-6 pt-0', className)} {...props}>
+    {children}
+  </div>
+);
+
+// Card Footer Component
+const CardFooter = ({ className, children, ...props }) => (
+  <div className={classNames('flex items-center p-6 pt-0', className)} {...props}>
+    {children}
+  </div>
+);
+
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter };

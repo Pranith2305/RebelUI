@@ -1,54 +1,56 @@
 import React from 'react';
-import Card from '../components/Cards'; // Ensure this path is correct based on your project structure
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/Cards'; // Adjust the import path if needed
 
-const CardTest = () => {
-  return (
-    <div className="flex flex-wrap justify-center gap-6 p-6">
-      {/* Default Card with Hover Effect */}
-      <Card
-        title="Default Card"
-        description="This is a default card with a hover effect. Hover over it to see the effect."
-        image="https://via.placeholder.com/400"
-      />
+const CardTest = () => (
+  <div className="flex flex-wrap justify-center gap-6 p-6">
+    {/* Default Card without hover effect */}
+    <Card className="w-80" hover={false}>
+      <CardHeader>
+        <CardTitle>Default Card</CardTitle>
+        <CardDescription>This card does not have a hover effect.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>This card is styled with default colors and does not include hover effects.</p>
+      </CardContent>
+      <CardFooter>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+          Action
+        </button>
+      </CardFooter>
+    </Card>
 
-      {/* Primary Card with Hover Effect */}
-      <Card
-        title="Primary Card"
-        description="This card has a blue background and a hover effect."
-        image="https://via.placeholder.com/400"
-        type="primary"
-        hoverEffect={true}
-      />
+    {/* Card with hover effect */}
+    <Card className="w-80" hover={true}>
+      <CardHeader>
+        <CardTitle>Hover Card</CardTitle>
+        <CardDescription>This card features a hover effect.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Hovering over this card will apply a scaling effect and increase the shadow.</p>
+      </CardContent>
+      <CardFooter>
+        <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+          Learn More
+        </button>
+      </CardFooter>
+    </Card>
 
-      {/* Success Card Without Hover Effect */}
-      <Card
-        title="Success Card"
-        description="This card has a green background but does not scale or shadow on hover."
-        image="https://via.placeholder.com/400"
-        type="success"
-        hoverEffect={false}
-      />
-
-      {/* Danger Card with Extra Large Shadow */}
-      <Card
-        title="Danger Card"
-        description="This card has a red background and an extra-large shadow."
-        image="https://via.placeholder.com/400"
-        type="danger"
-        shadow="2xl"
-      />
-
-      {/* Custom Card with All Styles */}
-      <Card
-        title="Custom Card"
-        description="This card has a custom style with a large shadow and hover effect."
-        image="https://via.placeholder.com/400"
-        type="secondary"
-        shadow="xl"
-        hoverEffect={true}
-      />
-    </div>
-  );
-};
+    {/* Another Card with hover effect */}
+    <Card className="w-80" hover={true}>
+      <CardHeader>
+        <CardTitle>Another Hover Card</CardTitle>
+        <CardDescription>Different content but with the same hover effect.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>This card also has a hover effect applied, similar to the one above.</p>
+      </CardContent>
+      <CardFooter>
+        <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+          Warning
+        </button>
+      </CardFooter>
+    </Card>
+  </div>
+);
 
 export default CardTest;
