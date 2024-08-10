@@ -49,24 +49,35 @@ const Button = ({
   `;
 
   return (
-    <button
-      className={classes}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {icon && iconPosition === 'left' && (
-        <span className="flex-shrink-0 mr-2">{icon}</span>
-      )}
-      {icon && iconPosition === 'center' && (
-        <span className="flex-shrink-0 mx-2">{icon}</span>
-      )}
-      {children && (
-        <span>{children}</span>
-      )}
-      {icon && iconPosition === 'right' && (
-        <span className="flex-shrink-0 ml-2">{icon}</span>
-      )}
-    </button>
+    <div className={variant === 'flip' ? 'flip-container' : ''}>
+      <button
+        className={classes}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {icon && iconPosition === 'left' && (
+          <span className="flex-shrink-0 mr-2">{icon}</span>
+        )}
+        {icon && iconPosition === 'center' && (
+          <span className="flex-shrink-0 mx-2">{icon}</span>
+        )}
+        {children && (
+          <span>{children}</span>
+        )}
+        {icon && iconPosition === 'right' && (
+          <span className="flex-shrink-0 ml-2">{icon}</span>
+        )}
+      </button>
+      {variant === 'flip' && (
+        <div className="flip-inner">
+          <div className="flip-front flex items-center justify-center">
+            {/* Front Content */}
+          </div>
+          <div className="flip-back flex items-center justify-center">
+            {/* Back Content */}
+          </div>
+        </div>
+      )}</div>
   );
 };
 

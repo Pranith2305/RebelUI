@@ -106,17 +106,11 @@ const ButtonTest = () => {
         <Button variant="destructive" className="w-full" loading>
           Loading Success
         </Button>
-        <Button variant="ripple" className="w-full">
-          Ripple Effect
+        <Button variant="typewriter" className="w-full">
+          Typewriter Effect
         </Button>
         <Button variant="pulse" className="w-full">
           Pulse Effect
-        </Button>
-        <Button variant="flip" className="w-full">
-          3D Flip
-        </Button>
-        <Button variant="typewriter" className="w-full">
-          Typewriter Effect
         </Button>
         <Button variant="liquid" className="w-full">
           Liquid Effect
